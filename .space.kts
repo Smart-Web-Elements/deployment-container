@@ -9,10 +9,10 @@ job("Build Docker image") {
         build {
             context = "docker"
             file = "./docker/Dockerfile"
-            labels["vendor"] = "SWE"
+            labels["vendor"] = "swe"
         }
 
-        push("s-w-e.registry.jetbrains.space/p/swe/deployment-container/deployment") {
+        push("swe.registry.jetbrains.space/p/swe/deployment-container/deployment") {
             tags("0.0.1")
         }
     }
