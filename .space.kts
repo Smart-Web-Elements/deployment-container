@@ -12,7 +12,7 @@ job("Build Docker image") {
             labels["vendor"] = "swe"
         }
 
-        push("swe.registry.jetbrains.space/p/swe/automation/deployment") {
+        push("swe.registry.jetbrains.space/p/swe/deployment/automation") {
             tags("0.0.1")
         }
     }
