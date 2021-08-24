@@ -12,8 +12,8 @@ job("Build Docker image") {
             labels["vendor"] = "SWE"
         }
 
-        push("s-w-e.registry.jetbrains.space/swe/deployment-container/deployment") {
-            tags("0.0.\$JB_SPACE_EXECUTION_NUMBER")
+        push("s-w-e.registry.jetbrains.space/p/swe/deployment-container/deployment") {
+            tags("0.0.1")
         }
     }
 }
