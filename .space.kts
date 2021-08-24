@@ -13,7 +13,7 @@ job("Build Docker image") {
         }
 
         push("swe.registry.jetbrains.space/p/swe/deployment/automation") {
-            tags("0.0.1")
+            tags("0.0.\$JB_SPACE_EXECUTION_NUMBER", "latest")
         }
     }
 }
