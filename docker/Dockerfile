@@ -6,3 +6,5 @@ RUN apt-get update \
        file \
        sshpass \
        jq
+
+echo $(whereis sshpass)
