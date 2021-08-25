@@ -5,4 +5,5 @@ RUN apt-get update \
        bash \
        file \
        sshpass \
-       jq
+       jq \
+       git
