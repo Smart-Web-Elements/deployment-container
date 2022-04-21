@@ -17,12 +17,11 @@ job("Publish Docker image") {
         }
 
         build {
-            context = "docker"
             file = "./docker/Dockerfile"
             labels["vendor"] = "mistermarlu"
         }
 
-        push("deployment/automation") {
+        push("deployment") {
             tags("1.0.\$JB_SPACE_EXECUTION_NUMBER", "latest")
         }
     }
