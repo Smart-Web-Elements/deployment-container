@@ -3,7 +3,7 @@
 * This Kotlin-script file lets you automate build activities
 * For more info, see https://www.jetbrains.com/help/space/automation.html
 */
-
+/*
 job("Publish Docker image") {
     docker("Docker build and push") {
         env["DOCKERHUB_USER"] = Secrets("dockerhub_user")
@@ -26,3 +26,4 @@ job("Publish Docker image") {
         }
     }
 }
+*/
