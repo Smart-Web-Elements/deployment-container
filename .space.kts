@@ -30,7 +30,7 @@ job("Publish Docker image") {
             labels["vendor"] = "mistermarlu"
         }
 
-        push("deployment") {
+        push("deployment/automation") {
             tags("\$BRANCH", "\$BRANCH.\$JB_SPACE_EXECUTION_NUMBER", "latest")
         }
     }
