@@ -14,7 +14,6 @@ job("Publish Docker image") {
     }
 
     host("Docker build and push") {
-    host("Docker build and push") {
         env["HUB_USER"] = Secrets("dockerhub_user")
         env["HUB_TOKEN"] = Secrets("dockerhub_token")
 
