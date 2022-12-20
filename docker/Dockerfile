@@ -22,7 +22,7 @@ RUN apt-get update \
        libicu-dev \
        libyaml-dev \
        libzip-dev \
-       imagemagick \
+       graphicsmagick \
        ghostscript \
     && docker-php-ext-install gd mysqli opcache zip intl \
     && rm -rf /var/lib/apt/lists/*
