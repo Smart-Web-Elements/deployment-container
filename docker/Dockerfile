@@ -7,6 +7,7 @@ RUN apt-get update \
        bash \
        file \
        sshpass \
+       openssh-client \
        jq \
        git \
        zip \
