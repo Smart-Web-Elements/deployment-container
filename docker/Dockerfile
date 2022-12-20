@@ -8,4 +8,6 @@ RUN apt-get update \
        file \
        sshpass \
        jq \
-       git
+       git \
+       zip \
+       unzip
