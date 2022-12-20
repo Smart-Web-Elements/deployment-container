@@ -8,4 +8,5 @@ RUN apt-get update \
        file \
        sshpass \
        jq \
+       git \
     && rm -rf /var/lib/apt/lists/*
