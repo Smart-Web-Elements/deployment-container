@@ -20,7 +20,6 @@ job("Publish Docker image") {
         shellScript {
             content = """
                 docker login --username ${'$'}HUB_USER --password "${'$'}HUB_TOKEN"
-                export BRANCH=${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)
             """
         }
 
@@ -28,7 +27,7 @@ job("Publish Docker image") {
             file = "./docker/Dockerfile"
             labels["vendor"] = "mistermarlu"
             tags {
-                +"build:${"$"}BRANCH"
+                +"build:${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)"
             }
         }
     }
