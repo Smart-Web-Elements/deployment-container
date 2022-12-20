@@ -8,7 +8,7 @@ job("Publish Docker image") {
     startOn {
         gitPush {
             branchFilter {
-                +Regex("php")
+                +"refs/heads/php-*"
             }
         }
     }
