@@ -13,25 +13,23 @@ job("Publish Docker image") {
         }
     }
 
-    docker("Docker build and push") {
-        env["DOCKERHUB_USER"] = Secrets("dockerhub_user")
-        env["DOCKERHUB_TOKEN"] = Secrets("dockerhub_token")
+    host("Docker build and push") {
+    host("Docker build and push") {
+        env["HUB_USER"] = Secrets("dockerhub_user")
+        env["HUB_TOKEN"] = Secrets("dockerhub_token")
 
-        beforeBuildScript {
+        shellScript {
             content = """
-                B64_AUTH=${'$'}(echo -n ${'$'}DOCKERHUB_USER:${'$'}DOCKERHUB_TOKEN | base64 -w 0)
-                echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"${'$'}B64_AUTH\"}}}" > ${'$'}DOCKER_CONFIG/config.json
-                export BRANCH=${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)
+                docker login --username ${'$'}HUB_USER --password "${'$'}HUB_TOKEN"
             """
         }
 
-        build {
+        dockerBuildPush {
             file = "./docker/Dockerfile"
             labels["vendor"] = "mistermarlu"
-        }
-
-        push("deployment/automation") {
-            tags("\$BRANCH", "\$BRANCH.\$JB_SPACE_EXECUTION_NUMBER", "latest")
+            tags {
+                +"build:\$BRANCH"
+            }
         }
     }
 }
