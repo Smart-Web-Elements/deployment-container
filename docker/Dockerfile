@@ -12,5 +12,5 @@ RUN apt-get update \
        zip \
        unzip \
        default-mysql-client \
-       docker-php-ext-install gd mysqli opcache zip intl \
+    && docker-php-ext-install gd mysqli opcache zip intl \
     && rm -rf /var/lib/apt/lists/*
