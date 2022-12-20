@@ -27,7 +27,7 @@ job("Publish Docker image") {
             file = "./docker/Dockerfile"
             labels["vendor"] = "mistermarlu"
             tags {
-                +"build:${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)"
+                +"mistermarlu/build:${'$'}(echo ${'$'}JB_SPACE_GIT_BRANCH | cut -d'/' -f 3)"
             }
         }
     }
