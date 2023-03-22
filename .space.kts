@@ -14,8 +14,8 @@ job("Publish Docker image") {
     }
 
     parameters {
-        secret("docker-user", value = "{{ project:dockerhub_user }}")
-        secret("docker-token", value = "{{ project:dockerhub_token }}")
+        text("docker-user", value = "{{ project:dockerhub_user }}", description = "Docker Username", allowCustomRunOverride = false)
+        secret("docker-token", value = "{{ project:dockerhub_token }}", description = "Docker Auth Token", allowCustomRunOverride = false)
     }
 
     host("Docker build and push") {
