@@ -13,9 +13,14 @@ job("Publish Docker image") {
         }
     }
 
+    parameters {
+        secret("docker-user", value = "{{ project:dockerhub_user }}")
+        secret("docker-token", value = "{{ project:dockerhub_token }}")
+    }
+
     host("Docker build and push") {
-        env["HUB_USER"] = Secrets("dockerhub_user")
-        env["HUB_TOKEN"] = Secrets("dockerhub_token")
+        env["HUB_USER"] = "{{ docker-user }}"
+        env["HUB_TOKEN"] = "{{ docker-token }}"
 
         shellScript {
             content = """
