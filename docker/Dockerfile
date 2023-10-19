@@ -24,5 +24,6 @@ RUN apt-get update \
        libzip-dev \
        graphicsmagick \
        ghostscript \
+       npm \
     && docker-php-ext-install gd mysqli opcache zip intl \
     && rm -rf /var/lib/apt/lists/*
