@@ -22,8 +22,11 @@ RUN apt-get update \
        libicu-dev \
        libyaml-dev \
        libzip-dev \
+       libssl-dev \
        graphicsmagick \
        ghostscript \
        npm \
     && docker-php-ext-install gd mysqli opcache zip intl \
+    && docker-php-ext-configure ftp --with-openssl-dir=/usr \
+    && docker-php-ext-install ftp \
     && rm -rf /var/lib/apt/lists/*
