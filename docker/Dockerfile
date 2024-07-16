@@ -2,6 +2,8 @@ FROM php:8.2-cli
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends\
        bash \
@@ -22,11 +24,8 @@ RUN apt-get update \
        libicu-dev \
        libyaml-dev \
        libzip-dev \
-       libssl-dev \
        graphicsmagick \
        ghostscript \
        npm \
-    && docker-php-ext-install gd mysqli opcache zip intl \
-    && docker-php-ext-configure ftp --with-openssl-dir=/usr \
-    && docker-php-ext-install ftp \
+    && install-php-extensions gd mysqli opcache zip intl ftp \
     && rm -rf /var/lib/apt/lists/*
