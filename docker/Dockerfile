@@ -2,6 +2,8 @@ FROM php:8.2-cli
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
+COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
+
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN apt-get update \
