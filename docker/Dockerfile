@@ -31,3 +31,6 @@ RUN apt-get update \
        npm \
     && install-php-extensions gd mysqli opcache zip intl ftp \
     && rm -rf /var/lib/apt/lists/*
+
+# Set default PHP memory limit to 1GB
+RUN echo "memory_limit=1G" > /usr/local/etc/php/conf.d/memory-limit.ini
