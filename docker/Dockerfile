@@ -16,7 +16,6 @@ RUN apt-get update \
        git \
        zip \
        unzip \
-       libzip4 \
        default-mysql-client \
        libfreetype6-dev \
        libtool \
