@@ -33,3 +33,7 @@ RUN apt-get update \
 
 # Set default PHP memory limit to 1GB
 RUN echo "memory_limit=1G" > /usr/local/etc/php/conf.d/memory-limit.ini
+
+# Disable SSL requirement for MySQL/MariaDB client tools by default (can be overridden)
+RUN mkdir -p /etc/mysql/conf.d \
+    && printf "[client]\nssl-mode=DISABLED\n\n[mysqldump]\nssl-mode=DISABLED\n" > /etc/mysql/conf.d/disable-ssl.cnf
