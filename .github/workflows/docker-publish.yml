@@ -30,5 +30,6 @@ jobs:
       - name: Build and push Docker image
         run: |
           IMAGE=ghcr.io/${{ github.repository_owner }}/build:${{ github.ref_name }}
+          IMAGE=$(echo "$IMAGE" | tr '[:upper:]' '[:lower:]')
           docker build -t "$IMAGE" -f ./docker/Dockerfile .
           docker push "$IMAGE"
