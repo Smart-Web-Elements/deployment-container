@@ -3,7 +3,7 @@ name: Publish Docker Image
 on:
   push:
     branches:
-      - php-* # Trigger only for branches matching "php-*"
+      - main
 
 permissions:
   contents: read
@@ -12,6 +12,10 @@ permissions:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php_version: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4']
 
     steps:
       # Checkout the repository code
@@ -29,7 +33,7 @@ jobs:
       # Build and push Docker image
       - name: Build and push Docker image
         run: |
-          IMAGE=ghcr.io/${{ github.repository_owner }}/build:${{ github.ref_name }}
+          IMAGE=ghcr.io/${{ github.repository_owner }}/build:php-${{ matrix.php_version }}
           IMAGE=$(echo "$IMAGE" | tr '[:upper:]' '[:lower:]')
-          docker build -t "$IMAGE" -f ./docker/Dockerfile .
+          docker build --build-arg PHP_VERSION=${{ matrix.php_version }} -t "$IMAGE" -f ./docker/Dockerfile .
           docker push "$IMAGE"
