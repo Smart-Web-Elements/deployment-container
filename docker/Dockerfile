@@ -28,7 +28,7 @@ RUN apt-get update \
        graphicsmagick \
        ghostscript \
        npm \
-    && install-php-extensions gd mysqli opcache zip intl ftp \
+    && install-php-extensions gd mysqli opcache zip intl ftp pdo_mysql \
     && rm -rf /var/lib/apt/lists/*
 
 # Set default PHP memory limit to 1GB
